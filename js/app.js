@@ -1,6 +1,6 @@
 "use strict";
 
-function create2dArray(rows, cols) {
+function create2dArray(rows = 6, cols = 5) {
   const outputArray = new Array(rows, cols);
   let value = 1;
 
@@ -14,4 +14,9 @@ function create2dArray(rows, cols) {
   return outputArray;
 }
 
-console.log(create2dArray(6, 5));
+function iterateArray(rows, cols, startRow, startCol, direction) {
+  const matrix = create2dArray(rows, cols);
+  console.log(matrix);
+}
+
+iterateArray();
