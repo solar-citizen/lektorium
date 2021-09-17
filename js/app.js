@@ -1,3 +1,5 @@
+// ******** Test task #1 ******** //
+
 "use strict";
 
 function create2dArray(rows, cols) {
@@ -29,7 +31,8 @@ function iterate2dArraySpirally(
     spiralArray = [];
   let startRow = startRowInput - 1,
     startCol = startColInput - 1;
-  let step = 1;
+  let step = 1,
+    multiplier = 0;
 
   console.log(matrix);
 
@@ -40,7 +43,7 @@ function iterate2dArraySpirally(
       let i;
 
       // LEFT
-      for (i = startCol; i >= startCol - step; --i) {
+      for (i = startCol; i >= startCol - step + multiplier; --i) {
         value = matrix[startRow][i];
         spiralArray.push(value);
       }
@@ -50,28 +53,29 @@ function iterate2dArraySpirally(
 
       // TOP
       for (i = startRow; i > startRow - step; --i) {
-        value = matrix[i][startCol];
+        value = matrix[i][startCol - multiplier];
         spiralArray.push(value);
       }
       startCol++;
       step++;
 
       // RIGHT
-      for (i = startCol; i < startCol + step; i++) {
-        value = matrix[startRow][i];
+      for (i = startCol - multiplier; i < startCol + step - multiplier; i++) {
+        value = matrix[startRow - multiplier * 2][i];
         spiralArray.push(value);
       }
       startCol++;
       startRow++;
 
       // BOTTOM
-      for (i = startRow; i < startRow + step; i++) {
-        value = matrix[i][startCol];
+      for (i = startRow - multiplier * 2; i < startRow + step; i++) {
+        value = matrix[i][startCol + multiplier];
         spiralArray.push(value);
       }
       startCol--;
       startRow++;
       step++;
+      multiplier++;
     }
   }
   console.log(spiralArray);
