@@ -14,55 +14,67 @@ function create2dArray(rows, cols) {
   return outputArray;
 }
 
-function iterateArray(
-  rows = 6,
-  cols = 5,
-  startRow = 4,
-  startCol = 2,
-  direction = "counter clockwise"
+function iterate2dArraySpirally(
+  // rows = 6,
+  // cols = 5,
+  // startRowInput = 4,
+  // startColInput = 2,
+  rows = 8,
+  cols = 8,
+  startRowInput = 4,
+  startColInput = 4,
+  direction = "left"
 ) {
   const matrix = create2dArray(rows, cols),
-    iteratedArray = [];
-  let startRowFix = startRow - 1,
-    startColFix = startCol - 1;
+    spiralArray = [];
+  let startRow = startRowInput - 1,
+    startCol = startColInput - 1;
+  let step = 1;
 
   console.log(matrix);
 
-  if (direction === "counter clockwise") {
-    while (startRowFix < rows && startColFix < cols) {
+  while (startRow < rows && startCol < cols) {
+    if (direction === "left") {
+      // Variable to store value of matrix.
       let value;
       let i;
 
-      for (i = startColFix; i < cols; i++) {
-        value = matrix[startRowFix][i];
-        iteratedArray.push(value);
+      // LEFT
+      for (i = startCol; i >= startCol - step; --i) {
+        value = matrix[startRow][i];
+        spiralArray.push(value);
       }
-      startRowFix++;
+      // startRow--;
+      startCol--;
+      startRow--;
 
-      for (i = startRowFix; i < rows; i++) {
-        value = matrix[i][cols - 1];
-        iteratedArray.push(value);
+      // TOP
+      for (i = startRow; i > startRow - step; --i) {
+        value = matrix[i][startCol];
+        spiralArray.push(value);
       }
-      cols--;
+      startCol++;
+      step++;
 
-      if (startRowFix < rows) {
-        for (i = cols - 1; i >= startColFix; i--) {
-          value = matrix[rows - 1][i];
-          iteratedArray.push(value);
-        }
-        rows--;
+      // RIGHT
+      for (i = startCol; i < startCol + step; i++) {
+        value = matrix[startRow][i];
+        spiralArray.push(value);
       }
+      startCol++;
+      startRow++;
 
-      if (startColFix < cols) {
-        for (i = rows - 1; i >= startRowFix; i--) {
-          value = matrix[i][startColFix];
-          iteratedArray.push(value);
-        }
-        startColFix++;
+      // BOTTOM
+      for (i = startRow; i < startRow + step; i++) {
+        value = matrix[i][startCol];
+        spiralArray.push(value);
       }
+      startCol--;
+      startRow++;
+      step++;
     }
-    console.log(iteratedArray);
   }
+  console.log(spiralArray);
 }
 
-iterateArray();
+iterate2dArraySpirally();
