@@ -4,9 +4,11 @@ function create2dArray(rows, cols) {
   const outputArray = new Array(rows, cols);
   let value = 1;
 
+  // Create rows.
   for (let row = 0; row < rows; row++) {
     outputArray[row] = [];
-
+    // Create columns with values
+    // from 1 to rows * cols
     for (let col = 0; col < cols; col++) {
       outputArray[row][col] = value++;
     }
@@ -21,14 +23,24 @@ function iterate2dArraySpirally(
   startingCol = 2,
   direction = "left"
 ) {
-  const matrix = create2dArray(rows, cols),
-    spiralArray = [],
-    matrixSize = rows * cols;
+  // Create matrix by using pre-built function.
+  const matrix = create2dArray(rows, cols);
+  // Calculate all elements.
+  const matrixSize = rows * cols;
+  // Create output array.
+  const spiralArray = [];
+  // Direction variables.
+  const directionLeft = "left";
+  const directionRight = "right";
+  // Variables to store transformed
+  // initial point input data to indexes.
+  let startingRowIndex = startingRow - 1;
+  let startingColIndex = startingCol - 1;
+  // Variable to store a number of steps
+  // required to move in certain direction.
+  let step = 1;
 
-  let startingRowIndex = startingRow - 1,
-    startingColIndex = startingCol - 1,
-    step = 1;
-
+  // Display input 2d array.
   console.log(matrix);
 
   // Setting initial point.
@@ -38,8 +50,8 @@ function iterate2dArraySpirally(
   while (spiralArray.length < matrixSize) {
     let i, value;
 
-    // Clockwise spiral
-    if (direction === "left") {
+    // Clockwise spiral.
+    if (direction === directionLeft) {
       // TO LEFT
       for (i = step; i > 0; i--) {
         startingColIndex--;
@@ -87,12 +99,13 @@ function iterate2dArraySpirally(
       step++;
     }
 
-    // Counterclockwise spiral
-    if (direction === "right") {
+    // Counterclockwise spiral.
+    if (direction === directionRight) {
       console.log("Probably later...");
       break;
     }
   }
+  // Display output array.
   console.log(spiralArray);
 }
 
