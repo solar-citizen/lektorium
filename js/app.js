@@ -1,5 +1,3 @@
-// ******** Test task #1 ******** //
-
 "use strict";
 
 function create2dArray(rows, cols) {
@@ -17,147 +15,82 @@ function create2dArray(rows, cols) {
 }
 
 function iterate2dArraySpirally(
-  // rows = 6,
-  // cols = 5,
-  // startRowInput = 4,
-  // startColInput = 2,
-  rows = 8,
-  cols = 8,
-  startRowInput = 4,
-  startColInput = 4,
+  rows = 6,
+  cols = 5,
+  startingRow = 4,
+  startingCol = 2,
   direction = "left"
 ) {
   const matrix = create2dArray(rows, cols),
-    size = rows * cols,
-    spiralArray = []; /*
-    pushOrPassValue = (value) => {
-      if (spiralArray.includes(value)) {
-        spiralArray.push(value);
-      } else {
-        break;
-      }
-    } */
-  let startRow = startRowInput - 1,
-    startCol = startColInput - 1;
-  let step = 1,
-    multiplier = 0;
+    spiralArray = [],
+    matrixSize = rows * cols;
+
+  let startingRowIndex = startingRow - 1,
+    startingColIndex = startingCol - 1,
+    step = 1;
 
   console.log(matrix);
 
-  //  while (startRow < rows && startCol < cols)
-  while (spiralArray.length < size + 1 || spiralArray.length < 48) {
-    // Variable to store value of matrix.
-    let value;
-    let i;
+  // Setting initial point.
+  spiralArray.push(matrix[startingRowIndex][startingColIndex]);
 
+  // 1 iteration = 1 pass of the square / 1 turn of the spiral.
+  while (spiralArray.length < matrixSize) {
+    let i, value;
+
+    // Clockwise spiral
     if (direction === "left") {
-      // LEFT
-      if (step === 5) {
-        for (i = startCol + 1; i >= startCol - step + multiplier; --i) {
-          value = matrix[startRow][i];
-          if (spiralArray.includes(value)) {
-            break;
-          } else {
-            spiralArray.push(value);
-          }
-        }
-      } else if (step === 7) {
-        for (i = startCol + 2; i >= startCol - step + multiplier + 1; --i) {
-          value = matrix[startRow][i];
-          if (spiralArray.includes(value)) {
-            break;
-          } else {
-            spiralArray.push(value);
-          }
-        }
-      } else {
-        for (i = startCol; i >= startCol - step + multiplier; --i) {
-          value = matrix[startRow][i];
-          if (spiralArray.includes(value)) {
-            break;
-          } else {
-            spiralArray.push(value);
-          }
-        }
-      }
-
-      startCol--;
-      startRow--;
-
-      // TOP
-      if (step === 7) {
-        for (i = startRow; i > startRow - step; --i) {
-          value = matrix[i][startCol - multiplier + 1];
-          if (spiralArray.includes(value)) {
-            break;
-          } else {
-            spiralArray.push(value);
-          }
-        }
-      } else {
-        for (i = startRow; i > startRow - step; --i) {
-          value = matrix[i][startCol - multiplier];
-          if (spiralArray.includes(value)) {
-            break;
-          } else {
-            spiralArray.push(value);
-          }
-        }
-      }
-
-      startCol++;
-      step++;
-
-      // RIGHT
-      for (i = startCol - multiplier; i < startCol + step - multiplier; i++) {
-        value = matrix[startRow - multiplier * 2][i];
-        if (spiralArray.includes(value)) {
-          break;
+      // TO LEFT
+      for (i = step; i > 0; i--) {
+        startingColIndex--;
+        value = matrix[startingRowIndex][startingColIndex];
+        if (value === undefined) {
+          continue;
         } else {
           spiralArray.push(value);
         }
       }
-      startCol++;
-      startRow++;
 
-      // BOTTOM
-      if (step === 4) {
-        for (
-          i = startRow - multiplier * 2;
-          i < startRow + step - multiplier * 2;
-          i++
-        ) {
-          value = matrix[i][startCol + multiplier];
-          if (spiralArray.includes(value)) {
-            break;
-          } else {
-            spiralArray.push(value);
-          }
+      // TO TOP
+      for (i = step; i > 0; i--) {
+        startingRowIndex--;
+        value = matrix[startingRowIndex][startingColIndex];
+        if (value === undefined) {
+          continue;
+        } else {
+          spiralArray.push(value);
         }
-      } else if (step === 6) {
-        for (i = startRow - multiplier * 2; i < step + 1; i++) {
-          value = matrix[i][startCol + multiplier];
-          if (spiralArray.includes(value)) {
-            break;
-          } else {
-            spiralArray.push(value);
-          }
-        }
-      } else {
-        for (i = startRow - multiplier * 2; i < startRow + step; i++) {
-          value = matrix[i][startCol + multiplier];
-          if (spiralArray.includes(value)) {
-            break;
-          } else {
-            spiralArray.push(value);
-          }
+      }
+      step++;
+
+      // TO RIGHT
+      for (i = step; i > 0; i--) {
+        startingColIndex++;
+        value = matrix[startingRowIndex][startingColIndex];
+        if (value === undefined) {
+          continue;
+        } else {
+          spiralArray.push(value);
         }
       }
 
-      startCol--;
-      startRow++;
+      // TO BOTTOM
+      for (i = step; i > 0; i--) {
+        startingRowIndex++;
+        value = matrix[startingRowIndex]?.[startingColIndex];
+        if (value === undefined) {
+          continue;
+        } else {
+          spiralArray.push(value);
+        }
+      }
       step++;
-      multiplier++;
+    }
+
+    // Counterclockwise spiral
+    if (direction === "right") {
+      console.log("Probably later...");
+      break;
     }
   }
   console.log(spiralArray);
