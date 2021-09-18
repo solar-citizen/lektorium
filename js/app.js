@@ -28,7 +28,15 @@ function iterate2dArraySpirally(
   direction = "left"
 ) {
   const matrix = create2dArray(rows, cols),
-    spiralArray = [];
+    size = rows * cols,
+    spiralArray = []; /*
+    pushOrPassValue = (value) => {
+      if (spiralArray.includes(value)) {
+        spiralArray.push(value);
+      } else {
+        break;
+      }
+    } */
   let startRow = startRowInput - 1,
     startCol = startColInput - 1;
   let step = 1,
@@ -36,42 +44,116 @@ function iterate2dArraySpirally(
 
   console.log(matrix);
 
-  while (startRow < rows && startCol < cols) {
-    if (direction === "left") {
-      // Variable to store value of matrix.
-      let value;
-      let i;
+  //  while (startRow < rows && startCol < cols)
+  while (spiralArray.length < size + 1 || spiralArray.length < 48) {
+    // Variable to store value of matrix.
+    let value;
+    let i;
 
+    if (direction === "left") {
       // LEFT
-      for (i = startCol; i >= startCol - step + multiplier; --i) {
-        value = matrix[startRow][i];
-        spiralArray.push(value);
+      if (step === 5) {
+        for (i = startCol + 1; i >= startCol - step + multiplier; --i) {
+          value = matrix[startRow][i];
+          if (spiralArray.includes(value)) {
+            break;
+          } else {
+            spiralArray.push(value);
+          }
+        }
+      } else if (step === 7) {
+        for (i = startCol + 2; i >= startCol - step + multiplier + 1; --i) {
+          value = matrix[startRow][i];
+          if (spiralArray.includes(value)) {
+            break;
+          } else {
+            spiralArray.push(value);
+          }
+        }
+      } else {
+        for (i = startCol; i >= startCol - step + multiplier; --i) {
+          value = matrix[startRow][i];
+          if (spiralArray.includes(value)) {
+            break;
+          } else {
+            spiralArray.push(value);
+          }
+        }
       }
-      // startRow--;
+
       startCol--;
       startRow--;
 
       // TOP
-      for (i = startRow; i > startRow - step; --i) {
-        value = matrix[i][startCol - multiplier];
-        spiralArray.push(value);
+      if (step === 7) {
+        for (i = startRow; i > startRow - step; --i) {
+          value = matrix[i][startCol - multiplier + 1];
+          if (spiralArray.includes(value)) {
+            break;
+          } else {
+            spiralArray.push(value);
+          }
+        }
+      } else {
+        for (i = startRow; i > startRow - step; --i) {
+          value = matrix[i][startCol - multiplier];
+          if (spiralArray.includes(value)) {
+            break;
+          } else {
+            spiralArray.push(value);
+          }
+        }
       }
+
       startCol++;
       step++;
 
       // RIGHT
       for (i = startCol - multiplier; i < startCol + step - multiplier; i++) {
         value = matrix[startRow - multiplier * 2][i];
-        spiralArray.push(value);
+        if (spiralArray.includes(value)) {
+          break;
+        } else {
+          spiralArray.push(value);
+        }
       }
       startCol++;
       startRow++;
 
       // BOTTOM
-      for (i = startRow - multiplier * 2; i < startRow + step; i++) {
-        value = matrix[i][startCol + multiplier];
-        spiralArray.push(value);
+      if (step === 4) {
+        for (
+          i = startRow - multiplier * 2;
+          i < startRow + step - multiplier * 2;
+          i++
+        ) {
+          value = matrix[i][startCol + multiplier];
+          if (spiralArray.includes(value)) {
+            break;
+          } else {
+            spiralArray.push(value);
+          }
+        }
+      } else if (step === 6) {
+        for (i = startRow - multiplier * 2; i < step + 1; i++) {
+          value = matrix[i][startCol + multiplier];
+          if (spiralArray.includes(value)) {
+            break;
+          } else {
+            spiralArray.push(value);
+          }
+        }
+      } else {
+        for (i = startRow - multiplier * 2; i < startRow + step; i++) {
+          value = matrix[i][startCol + multiplier];
+          if (spiralArray.includes(value)) {
+            break;
+          } else {
+            spiralArray.push(value);
+          }
+        }
       }
+
       startCol--;
       startRow++;
       step++;
