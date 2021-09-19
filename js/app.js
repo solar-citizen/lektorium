@@ -32,6 +32,27 @@ function iterate2dArraySpirally(
   // Direction variables.
   const directionLeft = "left";
   const directionRight = "right";
+  // Function to iterate in certain direction.
+  const iterateStepsToDirection = (i, value, stepToDirection) => {
+    for (i = step; i > 0; i--) {
+      if (stepToDirection === "left") {
+        startingColIndex--;
+      } else if (stepToDirection === "top") {
+        startingRowIndex--;
+      } else if (stepToDirection === "right") {
+        startingColIndex++;
+      } else if (stepToDirection === "bottom") {
+        startingRowIndex++;
+      }
+
+      value = matrix[startingRowIndex]?.[startingColIndex];
+      if (value === undefined) {
+        continue;
+      } else {
+        spiralArray.push(value);
+      }
+    }
+  };
   // Variables to store transformed
   // initial point input data to indexes.
   let startingRowIndex = startingRow - 1;
@@ -49,53 +70,25 @@ function iterate2dArraySpirally(
   // 1 iteration = 1 pass of the square / 1 turn of the spiral.
   while (spiralArray.length < matrixSize) {
     let i, value;
+    const stepToLeft = "left";
+    const stepToTop = "top";
+    const stepToRight = "right";
+    const stepToBottom = "bottom";
 
     // Clockwise spiral.
     if (direction === directionLeft) {
       // TO LEFT
-      for (i = step; i > 0; i--) {
-        startingColIndex--;
-        value = matrix[startingRowIndex][startingColIndex];
-        if (value === undefined) {
-          continue;
-        } else {
-          spiralArray.push(value);
-        }
-      }
+      iterateStepsToDirection(i, value, stepToLeft);
 
       // TO TOP
-      for (i = step; i > 0; i--) {
-        startingRowIndex--;
-        value = matrix[startingRowIndex][startingColIndex];
-        if (value === undefined) {
-          continue;
-        } else {
-          spiralArray.push(value);
-        }
-      }
+      iterateStepsToDirection(i, value, stepToTop);
       step++;
 
       // TO RIGHT
-      for (i = step; i > 0; i--) {
-        startingColIndex++;
-        value = matrix[startingRowIndex][startingColIndex];
-        if (value === undefined) {
-          continue;
-        } else {
-          spiralArray.push(value);
-        }
-      }
+      iterateStepsToDirection(i, value, stepToRight);
 
       // TO BOTTOM
-      for (i = step; i > 0; i--) {
-        startingRowIndex++;
-        value = matrix[startingRowIndex]?.[startingColIndex];
-        if (value === undefined) {
-          continue;
-        } else {
-          spiralArray.push(value);
-        }
-      }
+      iterateStepsToDirection(i, value, stepToBottom);
       step++;
     }
 
