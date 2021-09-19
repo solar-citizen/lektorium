@@ -21,7 +21,7 @@ function iterate2dArraySpirally(
   cols = 5,
   startingRow = 4,
   startingCol = 2,
-  direction = "left"
+  firstStepDirection = "left"
 ) {
   // Create matrix by using pre-built function.
   const matrix = create2dArray(rows, cols);
@@ -76,7 +76,7 @@ function iterate2dArraySpirally(
     const stepToBottom = "bottom";
 
     // Clockwise spiral.
-    if (direction === directionLeft) {
+    if (firstStepDirection === directionLeft) {
       // TO LEFT
       iterateStepsToDirection(i, value, stepToLeft);
 
@@ -93,7 +93,7 @@ function iterate2dArraySpirally(
     }
 
     // Counterclockwise spiral.
-    if (direction === directionRight) {
+    if (firstStepDirection === directionRight) {
       console.log("Probably later...");
       break;
     }
