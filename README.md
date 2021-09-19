@@ -3,11 +3,11 @@
 <h2 align="center"> Task # 1 </h1>
 <p align="center">
   First step to left: 
-  <img src="doc/firstStepLeft.JPG" alt="Task 1 Result" height="182px" width="810px">
+  <img src="doc/task-1/firstStepLeft.JPG" alt="Task 1 Result Left Step" height="182px" width="810px">
 </p>
 <p align="center">
   First step to right:
-  <img src="doc/firstStepRight.JPG" alt="Task 1 Result" height="90px" width="800px">
+  <img src="doc/task-1/firstStepRight.JPG" alt="Task 1 Result Right Step" height="90px" width="800px">
 </p>
 
 <!-- TABLE OF CONTENTS -->
@@ -42,11 +42,11 @@
 
 <p align="center">
   First step to left: 
-  <img src="doc/firstStepLeft.JPG" alt="Task 1 Result" height="182px" width="810px">
+  <img src="doc/task-1/firstStepLeft.JPG" alt="Task 1 Result Left Step" height="182px" width="810px">
 </p>
 <p align="center">
   First step to right:
-  <img src="doc/firstStepRight.JPG" alt="Task 1 Result" height="90px" width="800px">
+  <img src="doc/task-1/firstStepRight.JPG" alt="Task 1 Result Right Step" height="90px" width="800px">
 </p>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
