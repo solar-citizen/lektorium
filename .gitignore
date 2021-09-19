@@ -25,4 +25,3 @@ yarn-error.log*
 # my stuff
 .jshintrc
 js/test.js
-js/test-obj.js

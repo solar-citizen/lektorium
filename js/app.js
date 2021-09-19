@@ -1,8 +1,8 @@
-"use strict";
+// --- --- Task #1 --- --- //
 
 // Direction variables.
-const directionLeft = "left";
-const directionRight = "right";
+const firstStepDirectionLeft = "left";
+const firstStepDirectionRight = "right";
 
 // Step variables.
 const stepToLeft = "left";
@@ -15,7 +15,7 @@ function iterate2dArraySpirally(
   cols = 5,
   startingRow = 4,
   startingCol = 2,
-  firstStepDirection = directionLeft
+  firstStepDirection = firstStepDirectionLeft
 ) {
   // Function to create matrix.
   const create2dArray = (rows, cols) => {
@@ -80,8 +80,8 @@ function iterate2dArraySpirally(
   while (spiralArray.length < matrixSize) {
     let i, value;
 
-    // If first step to right:
-    if (firstStepDirection === directionLeft) {
+    // If first step to left:
+    if (firstStepDirection === firstStepDirectionLeft) {
       // TO LEFT
       iterateStepsToDirection(i, value, stepToLeft);
 
@@ -97,8 +97,8 @@ function iterate2dArraySpirally(
       step++;
     }
 
-    // If first step to left:
-    if (firstStepDirection === directionRight) {
+    // If first step to right:
+    if (firstStepDirection === firstStepDirectionRight) {
       // TO RIGHT
       iterateStepsToDirection(i, value, stepToRight);
 
