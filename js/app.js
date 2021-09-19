@@ -10,23 +10,6 @@ const stepToTop = "top";
 const stepToRight = "right";
 const stepToBottom = "bottom";
 
-// Function, which creates matrix.
-function create2dArray(rows, cols) {
-  const outputArray = new Array(rows, cols);
-  let value = 1;
-
-  // Create rows.
-  for (let row = 0; row < rows; row++) {
-    outputArray[row] = [];
-    // Create columns with values
-    // from 1 to rows * cols
-    for (let col = 0; col < cols; col++) {
-      outputArray[row][col] = value++;
-    }
-  }
-  return outputArray;
-}
-
 function iterate2dArraySpirally(
   rows = 6,
   cols = 5,
@@ -34,12 +17,23 @@ function iterate2dArraySpirally(
   startingCol = 2,
   firstStepDirection = directionLeft
 ) {
-  // Create matrix by using pre-built function.
-  const matrix = create2dArray(rows, cols);
-  // Calculate all elements.
-  const matrixSize = rows * cols;
-  // Create output array.
-  const spiralArray = [];
+  // Function to create matrix.
+  const create2dArray = (rows, cols) => {
+    const outputArray = new Array(rows, cols);
+    let value = 1;
+
+    // Create rows.
+    for (let row = 0; row < rows; row++) {
+      outputArray[row] = [];
+      // Create columns with values
+      // from 1 to rows * cols
+      for (let col = 0; col < cols; col++) {
+        outputArray[row][col] = value++;
+      }
+    }
+    return outputArray;
+  };
+
   // Function to iterate in certain direction.
   const iterateStepsToDirection = (i, value, stepToDirection) => {
     for (i = step; i > 0; i--) {
@@ -61,6 +55,13 @@ function iterate2dArraySpirally(
       }
     }
   };
+
+  // Create matrix by using pre-built function.
+  const matrix = create2dArray(rows, cols);
+  // Calculate all elements.
+  const matrixSize = rows * cols;
+  // Create output array.
+  const spiralArray = [];
   // Variables to store transformed
   // initial point input data to indexes.
   let startingRowIndex = startingRow - 1;
