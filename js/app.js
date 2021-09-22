@@ -1,6 +1,6 @@
 // --- --- Task #1 --- --- //
 
-// Direction variables.
+// First step direction variables.
 const firstStepDirectionLeft = "left";
 const firstStepDirectionRight = "right";
 
@@ -20,7 +20,7 @@ function iterate2dArraySpirally(
     for (let row = 0; row < rows; row++) {
       outputArray[row] = [];
       // Create columns with values
-      // from 1 to rows * cols
+      // from 1 to (rows * cols)
       for (let col = 0; col < cols; col++) {
         outputArray[row][col] = value++;
       }
@@ -67,7 +67,7 @@ function iterate2dArraySpirally(
 
   // Create matrix by using pre-built function.
   const matrix = create2dArray(rows, cols);
-  // Calculate all elements.
+  // Calculate all elements of matrix.
   const matrixSize = rows * cols;
   // Create output array.
   const spiralArray = [];
@@ -122,3 +122,11 @@ function iterate2dArraySpirally(
 }
 
 iterate2dArraySpirally();
+
+// Export main function and
+// first step variables.
+module.exports = {
+  iterate2dArraySpirally,
+  firstStepDirectionLeft,
+  firstStepDirectionRight,
+};
