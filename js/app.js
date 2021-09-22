@@ -4,12 +4,6 @@
 const firstStepDirectionLeft = "left";
 const firstStepDirectionRight = "right";
 
-// Step variables.
-const stepToLeft = "left";
-const stepToTop = "top";
-const stepToRight = "right";
-const stepToBottom = "bottom";
-
 function iterate2dArraySpirally(
   rows = 6,
   cols = 5,
@@ -17,7 +11,7 @@ function iterate2dArraySpirally(
   startingCol = 2,
   firstStepDirection = firstStepDirectionLeft
 ) {
-  // Function to create matrix.
+  // Function to create a matrix.
   const create2dArray = (rows, cols) => {
     const outputArray = new Array(rows, cols);
     let value = 1;
@@ -56,19 +50,27 @@ function iterate2dArraySpirally(
     }
   };
 
+  // Steps directions variables.
+  const stepToLeft = "left";
+  const stepToTop = "top";
+  const stepToRight = "right";
+  const stepToBottom = "bottom";
+
+  // Variable to store a number of steps
+  // required to move in certain direction.
+  let step = 1;
+
+  // Variables to store transformed
+  // initial point input data to indexes.
+  let startingRowIndex = startingRow - 1;
+  let startingColIndex = startingCol - 1;
+
   // Create matrix by using pre-built function.
   const matrix = create2dArray(rows, cols);
   // Calculate all elements.
   const matrixSize = rows * cols;
   // Create output array.
   const spiralArray = [];
-  // Variables to store transformed
-  // initial point input data to indexes.
-  let startingRowIndex = startingRow - 1;
-  let startingColIndex = startingCol - 1;
-  // Variable to store a number of steps
-  // required to move in certain direction.
-  let step = 1;
 
   // Display input 2d array.
   console.log(matrix);
@@ -114,8 +116,9 @@ function iterate2dArraySpirally(
       step++;
     }
   }
-  // Display output array.
+  // Display and return output array.
   console.log(spiralArray);
+  return spiralArray;
 }
 
 iterate2dArraySpirally();
