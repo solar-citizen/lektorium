@@ -56,7 +56,7 @@
 
 <p> 
   I decided to make unit testing of code and used <b><i>Jest</i></b> for this purpose.
-  I also installed <b><i>babel</i></b> and <b><i>@babel/preset-env</i></b> to work with modules (it transpiles es6 module to cjs module).
+  I also installed <b><i>babel</i></b> and <b><i>@babel/preset-env</i></b> to work with modules (it transpiles ES6 module to CommonJS module).
 </p>
 
 <p align="center"> :microscope: Tests results: </p>
@@ -66,9 +66,3 @@
 </p>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-
-<!-- CREDITS -->
-<h2 id="credits"> :scroll: Credits</h2>
-<ul>
-    <li><a href="#task1">Task 1:</a> Vladyslav Tishchenko(myself), Volodymyr Yesypenko for clarifying some of the nuances.</li>
-</ul>
