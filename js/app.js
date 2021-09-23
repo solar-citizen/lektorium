@@ -125,7 +125,7 @@ iterate2dArraySpirally();
 
 // Export main function and
 // first step variables.
-module.exports = {
+export {
   iterate2dArraySpirally,
   firstStepDirectionLeft,
   firstStepDirectionRight,

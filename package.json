@@ -9,6 +9,15 @@
   "scripts": {
     "test": "jest"
   },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/js/test.js"
+    ],
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
+  },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/solar-citizen/lektorium.git"
@@ -20,11 +29,8 @@
   },
   "homepage": "https://github.com/solar-citizen/lektorium#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.15.6",
+    "babel-jest": "^27.2.1",
     "jest": "^27.2.1"
-  },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "/js/test.js"
-    ]
   }
 }

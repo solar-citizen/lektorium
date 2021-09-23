@@ -1,10 +1,10 @@
 // Import main function and
 // first step variables.
-const {
+import {
   iterate2dArraySpirally,
   firstStepDirectionLeft,
   firstStepDirectionRight,
-} = require("../js/app");
+} from "../js/app.js";
 
 test("The function should iterate a matrix spirally and return an array with a strict sequence of numbers. In this case iteration starts with step to left.", () => {
   expect(
