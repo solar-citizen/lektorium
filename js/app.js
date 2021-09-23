@@ -1,5 +1,8 @@
 // --- --- Task #1 --- --- //
 
+// Import modules:
+import { create2dArray } from "./create2dArray.js";
+
 // First step direction variables.
 const firstStepDirectionLeft = "left";
 const firstStepDirectionRight = "right";
@@ -12,21 +15,7 @@ function iterate2dArraySpirally(
   firstStepDirection = firstStepDirectionLeft
 ) {
   // Function to create a matrix.
-  const create2dArray = (rows, cols) => {
-    const outputArray = new Array(rows, cols);
-    let value = 1;
-
-    // Create rows.
-    for (let row = 0; row < rows; row++) {
-      outputArray[row] = [];
-      // Create columns with values
-      // from 1 to (rows * cols)
-      for (let col = 0; col < cols; col++) {
-        outputArray[row][col] = value++;
-      }
-    }
-    return outputArray;
-  };
+  create2dArray(rows, cols);
 
   // Function to iterate in certain direction.
   const iterateStepsToDirection = (i, value, stepToDirection) => {
