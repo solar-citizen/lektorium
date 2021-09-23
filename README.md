@@ -62,7 +62,7 @@
 <p align="center"> :microscope: Tests results: </p>
 
 <p align="center">
-  <img src="doc/tests.PNG" alt="Tests Results" height="103px" width="305px">
+  <img src="doc/task-1/tests.PNG" alt="Tests Results" height="103px" width="305px">
 </p>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)

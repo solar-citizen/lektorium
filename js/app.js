@@ -126,7 +126,7 @@ iterate2dArraySpirally();
 // Export main function and
 // first step variables.
 export {
-  iterate2dArraySpirally,
   firstStepDirectionLeft,
   firstStepDirectionRight,
+  iterate2dArraySpirally,
 };

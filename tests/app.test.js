@@ -1,9 +1,9 @@
 // Import main function and
 // first step variables.
 import {
-  iterate2dArraySpirally,
   firstStepDirectionLeft,
   firstStepDirectionRight,
+  iterate2dArraySpirally,
 } from "../js/app.js";
 
 test("The function should iterate a matrix spirally and return an array with a strict sequence of numbers. In this case iteration starts with step to left.", () => {
