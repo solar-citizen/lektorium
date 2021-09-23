@@ -64,11 +64,3 @@
 <p align="center">
   <img src="doc/task-1/tests.PNG" alt="Tests Results" height="103px" width="305px">
 </p>
-
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-
-<!-- CREDITS -->
-<h2 id="credits"> :scroll: Credits</h2>
-<ul>
-    <li><a href="#task1">Task 1:</a> Vladyslav Tishchenko(myself), Volodymyr Yesypenko for clarifying some of the nuances.</li>
-</ul>
