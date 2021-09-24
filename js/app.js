@@ -14,8 +14,28 @@ function iterate2dArraySpirally(
   startingCol = 2,
   firstStepDirection = firstStepDirectionLeft
 ) {
-  // Function to create a matrix.
-  create2dArray(rows, cols);
+  // Variables to store transformed
+  // initial point input data to indexes.
+  let startingRowIndex = startingRow - 1;
+  let startingColIndex = startingCol - 1;
+
+  // Variable to store result of
+  // create2dArray function.
+  let matrix;
+  // Calculate all elements of matrix.
+  const matrixSize = rows * cols;
+  // Create output array.
+  const spiralArray = [];
+
+  // Variable to store a number of steps
+  // required to move in certain direction.
+  let step = 1;
+
+  // Steps directions variables.
+  const stepToLeft = "left";
+  const stepToTop = "top";
+  const stepToRight = "right";
+  const stepToBottom = "bottom";
 
   // Function to iterate in certain direction.
   const iterateStepsToDirection = (i, value, stepToDirection) => {
@@ -39,30 +59,44 @@ function iterate2dArraySpirally(
     }
   };
 
-  // Steps directions variables.
-  const stepToLeft = "left";
-  const stepToTop = "top";
-  const stepToRight = "right";
-  const stepToBottom = "bottom";
+  // Check for valid rows and cols values.
+  if (rows < 2 && cols < 2) {
+    throw new Error(
+      `Ivalid number of rows: ${rows} and columns: ${cols}. To build matrix use number 2 or more.`
+    );
+  } else if (rows < 2) {
+    throw new Error(
+      `Ivalid number of rows: ${rows}. To build matrix use number 2 or more.`
+    );
+  } else if (cols < 2) {
+    throw new Error(
+      `Ivalid number of columns: ${cols}. To build matrix use number 2 or more.`
+    );
+  } else {
+    // Create matrix by using imported function.
+    matrix = create2dArray(rows, cols);
+  }
 
-  // Variable to store a number of steps
-  // required to move in certain direction.
-  let step = 1;
-
-  // Variables to store transformed
-  // initial point input data to indexes.
-  let startingRowIndex = startingRow - 1;
-  let startingColIndex = startingCol - 1;
-
-  // Create matrix by using pre-built function.
-  const matrix = create2dArray(rows, cols);
-  // Calculate all elements of matrix.
-  const matrixSize = rows * cols;
-  // Create output array.
-  const spiralArray = [];
-
-  // Display input 2d array.
-  console.log(matrix);
+  // Check for valid startingRow and startingCol values.
+  if (startingRow > rows && startingCol > cols) {
+    throw new Error(
+      `
+        Ivalid startingRow value: ${startingRow} and startingCol value: ${startingCol}. 
+        It must be less than rows value: ${rows} and columns value: ${cols}.
+      `
+    );
+  } else if (startingRow > rows) {
+    throw new Error(
+      `Ivalid startingRow value: ${startingRow}. It must be less than rows value: ${rows}. `
+    );
+  } else if (startingCol > cols) {
+    throw new Error(
+      `Ivalid startingCol value: ${startingCol}. It must be less than cols value: ${cols}. `
+    );
+  } else {
+    // Display input 2d array.
+    console.log(matrix);
+  }
 
   // Setting initial point.
   spiralArray.push(matrix[startingRowIndex][startingColIndex]);
@@ -105,6 +139,7 @@ function iterate2dArraySpirally(
       step++;
     }
   }
+
   // Display and return output array.
   console.log(spiralArray);
   return spiralArray;
