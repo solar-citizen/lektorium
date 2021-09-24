@@ -1,12 +1,14 @@
 <h1 align="center"> Highlights: </h1>
 
 <h2 align="center"> Task # 1 </h1>
+
+<p align="center"> First step to left: </p>
 <p align="center">
-  First step to left: 
   <img src="doc/task-1/firstStepLeft.JPG" alt="Task 1 Result Left Step" height="182px" width="810px">
 </p>
+
+<p align="center"> First step to right: </p>
 <p align="center">
-  First step to right:
   <img src="doc/task-1/firstStepRight.JPG" alt="Task 1 Result Right Step" height="90px" width="800px">
 </p>
 
@@ -55,12 +57,31 @@
 <h3> :small_orange_diamond: Tests: </h3>
 
 <p> 
-  I decided to make unit testing of code and used <b><i>Jest</i></b> for this purpose.
-  I also installed <b><i>babel</i></b> and <b><i>@babel/preset-env</i></b> to work with modules (it transpiles ES6 module to CommonJS module).
+  I decided to make unit testing of code in purpose of learn and used <b><i>Jest</i></b> for this.
+  <br>
+  I also installed <b><i>babel</i></b> and <b><i>@babel/preset-env</i></b> to work with modules (it transpiles es6 module to cjs module).
+  <br>
+  After playing around with modules, couple of simple tests was made.
 </p>
 
-<p align="center"> :microscope: Tests results: </p>
+<h4> :microscope: Tests results: </h4>
 
+<p align="center"> App Module Tests: </p>
 <p align="center">
-  <img src="doc/task-1/tests.PNG" alt="Tests Results" height="103px" width="305px">
+  <img src="doc/task-1/app-test.PNG" alt="App Module Tests Results" height="222px" width="952px">
 </p>
+
+<p align="center"> Matrix Generator Module Test: </p>
+<p align="center">
+  <img src="doc/task-1/create2dArray-test.PNG" alt="Matrix Generator Module Test Results" height="139px" width="611px">
+</p>
+
+<p> 
+  As you can see, all tests are passed and results are valid.
+  <br>
+  :exclamation: I'll make a better tests in near future.
+  <br>
+  <i>Especially for matrix generator module.</i>
+</p>
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
