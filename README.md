@@ -37,10 +37,8 @@
   <p>You're able to choose "left" (<code> firstStepDirectionLeft </code>) or "right" (<code> firstStepDirectionLeft </code>).</p>
 </ul>
 
-<p> :exclamation: I could also modify the function and make it iterate in counterclockwise manner, but it wasn't in technical assignment.</p>
-
 <p>Function with basic parameters looks like this:</p>
-<pre><code> function iterate2dArraySpirally(rows = 6, cols = 5, startingRow = 4, startingCol = 2, firstStepDirection = firstStepDirectionLeft) {}</code></pre>
+<pre><code> const iterate2dArraySpirally = (rows = 6, cols = 5, startingRow = 4, startingCol = 2, firstStepDirection = firstStepDirectionLeft) => {}</code></pre>
 
 <h2> Results </h2>
 
@@ -77,11 +75,7 @@
 </p>
 
 <p> 
-  As you can see, all tests are passed and results are valid.
-  <br>
-  :exclamation: I'll make a better tests in near future.
-  <br>
-  <i>Especially for matrix generator module.</i>
+  All tests are passed and results are valid.
 </p>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
