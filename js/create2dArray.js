@@ -1,6 +1,6 @@
 // Function to create a matrix.
 const create2dArray = (rows, cols) => {
-  const outputArray = new Array(rows, cols);
+  const outputArray = [];
   let value = 1;
 
   // Create rows.

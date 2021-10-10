@@ -7,13 +7,13 @@ import { create2dArray } from "./create2dArray.js";
 const firstStepDirectionLeft = "left";
 const firstStepDirectionRight = "right";
 
-function iterate2dArraySpirally(
+const iterate2dArraySpirally = (
   rows = 6,
   cols = 5,
   startingRow = 4,
   startingCol = 2,
   firstStepDirection = firstStepDirectionLeft
-) {
+) => {
   // Variables to store transformed
   // initial point input data to indexes.
   let startingRowIndex = startingRow - 1;
@@ -143,7 +143,7 @@ function iterate2dArraySpirally(
   // Display and return output array.
   console.log(spiralArray);
   return spiralArray;
-}
+};
 
 iterate2dArraySpirally();
 
