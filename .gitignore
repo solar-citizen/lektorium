@@ -25,3 +25,5 @@ yarn-error.log*
 # my stuff
 .jshintrc
 js/test.js
+js/test2.js
+js/test3.js

@@ -5,9 +5,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lektorium Test Tasks</title>
+    <link rel="stylesheet" href="css/task-2/style.css" />
   </head>
   <body>
-    <script type="module" src="js/create2dArray.js"></script>
-    <script type="module" src="js/app.js"></script>
+    <div class="starfield js-starfield">
+      <div class="blackhole-object js-blackhole">
+        <span class="title blackhole-object__title">
+          Drop Sun to the Blackhole
+        </span>
+        <div class="blackhole-object__body"></div>
+      </div>
+      <div class="wrapper-outer">
+        <div class="celestial-object celestial-object--0 js-celestial">
+          <div class="title-edit js-titleEdit hide">
+            <label for="#0" class="title-edit__label">Enter new name: </label>
+            <div class="wrapper-inner">
+              <input type="text" class="title-edit__input js-editInput" id="#0" />
+              <button type="button" class="title-edit__btn js-editBtn">
+                &#10004;
+              </button>
+            </div>
+          </div>
+          <span class="title celestial-object__title js-title">Sun</span>
+          <div class="celestial-object__body js-objectBody star"></div>
+        </div>
+      </div>
+      <div class="wrapper-outer">
+        <div class="celestial-object celestial-object--1 js-celestial">
+          <div class="title-edit js-titleEdit hide">
+            <label for="#1" class="title-edit__label">Enter new name: </label>
+            <div class="wrapper-inner">
+              <input type="text" class="title-edit__input js-editInput" id="#1" />
+              <button type="button" class="title-edit__btn js-editBtn">
+                &#10004;
+              </button>
+            </div>
+          </div>
+          <span class="title celestial-object__title js-title">Sun</span>
+          <div class="celestial-object__body js-objectBody star"></div>
+        </div>
+      </div>
+      
+      
+
+      <!-- <div class="celestial-object celestial-object--0 js-celestial">
+        <div class="title-edit js-titleEdit hide">
+          <label for="#0" class="title-edit__label">Enter new name: </label>
+          <div class="wrapper">
+            <input type="text" class="title-edit__input js-editInput" id="#0" />
+            <button type="button" class="title-edit__btn js-editBtn">
+              &#10004;
+            </button>
+          </div>
+        </div>
+        <span class="title celestial-object__title js-title">Sun</span>
+        <div class="celestial-object__body star" draggable="true"></div>
+      </div>
+
+      <div class="celestial-object celestial-object--1 js-celestial">
+        <div class="title-edit js-titleEdit hide">
+          <label for="#1" class="title-edit__label">Enter new name: </label>
+          <div class="wrapper">
+            <input type="text" class="title-edit__input js-editInput" id="#1" />
+            <button type="button" class="title-edit__btn js-editBtn">
+              &#10004;
+            </button>
+          </div>
+        </div>
+        <span class="title celestial-object__title js-title">Sun</span>
+        <div class="celestial-object__body star" draggable="true"></div>
+      </div>
+    </div> -->
+
+    <script type="module" src="js/task-2/app.js"></script>
   </body>
 </html>

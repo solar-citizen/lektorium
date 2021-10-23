@@ -1,0 +1,155 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+  color: #fff;
+  font-size: 24px;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 2px 0 3px rgba(0, 0, 0, 0.7);
+}
+
+.hide {
+  display: none !important;
+}
+
+.blackhole-object.hovered span {
+  display: block;
+}
+
+.starfield {
+  height: 100vh;
+  background: url("../../img/task-2/bg.jpg") no-repeat center/cover;
+}
+
+.blackhole-object {
+  position: absolute;
+  z-index: 1;
+  top: 5px;
+  left: 5px;
+  width: calc(777px / 3);
+  height: calc(437px / 3 + 40px);
+  top: 200px;
+  left: 200px;
+  cursor: default;
+}
+.blackhole-object__title {
+  display: none;
+  position: absolute;
+  top: -50px;
+}
+.blackhole-object__body {
+  width: calc(777px / 3);
+  height: calc(437px / 3);
+  background: url("../../img/task-2/objects/black-hole2.gif") no-repeat center/cover;
+}
+
+.celestial-object {
+  position: relative;
+  cursor: all-scroll;
+}
+.celestial-object > * {
+  position: relative;
+}
+.celestial-object__title {
+  margin-top: 5px;
+  display: block;
+  cursor: text;
+  border: 2px solid transparent;
+  border-radius: 5px;
+}
+.celestial-object__title:hover {
+  border-color: #c0c0c0;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+.celestial-object__body {
+  z-index: -1;
+  margin: 5px auto 0;
+}
+.celestial-object-1 {
+  top: 50px;
+  left: 50px;
+}
+.celestial-object-2 {
+  top: 450px;
+  left: 450px;
+}
+.celestial-object-3 {
+  top: 650px;
+  left: 650px;
+}
+.celestial-object-4 {
+  top: 50px;
+  right: 50px;
+}
+
+.wrapper-outer {
+  width: 200px;
+  height: 300px;
+  position: absolute;
+  z-index: 10;
+  background: #000;
+}
+.wrapper-inner {
+  display: flex;
+  align-items: flex-end;
+}
+
+.title-edit {
+  display: flex;
+  flex-direction: column;
+}
+.title-edit__label {
+  font-size: 14px;
+  color: #fff;
+  text-shadow: 2px 0 3px rgba(0, 0, 0, 0.7);
+  animation: input-fade 3s infinite alternate;
+}
+.title-edit__input {
+  width: 100%;
+  margin-top: 5px;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+.title-edit__input:hover, .title-edit__input:focus {
+  border: 2px solid #c0c0c0;
+}
+.title-edit__btn {
+  padding: 2px 8px;
+  background-color: #379e37;
+  border: 1px solid #266b26;
+  border-radius: 3px;
+  font-size: 18px;
+  color: #000;
+}
+.title-edit__btn:hover {
+  cursor: pointer;
+  background-color: #266b26;
+  color: #fff;
+}
+
+.star {
+  width: calc(278px / 2);
+  height: calc(278px / 2);
+  background: url("../../img/task-2/objects/sun2.gif") no-repeat center/cover;
+}
+
+@keyframes input-fade {
+  from {
+    opacity: 10%;
+  }
+  to {
+    opacity: 100%;
+  }
+}

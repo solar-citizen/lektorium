@@ -19,6 +19,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li><a href="#task1"> ➤ Task 1: Iterate array spirally </a></li>
+    <li><a href="#task2"> ➤ Task 1: Drag & Drop </a></li>
   </ol>
 </details>
 
@@ -79,3 +80,8 @@
 </p>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+<!-- TASKO1 -->
+<h2 id="task2"> :small_orange_diamond: Task 1: Drag & Drop </h2>
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas fugit nisi, inventore a minima aperiam?</p>

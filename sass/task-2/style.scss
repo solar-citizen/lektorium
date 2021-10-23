@@ -1,0 +1,184 @@
+// import variables
+@import "_includes/variables";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+  color: #fff;
+  font-size: 24px;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: $textshadow;
+}
+
+.hide {
+  display: none !important;
+}
+
+.blackhole-object.hovered span {
+  display: block;
+}
+
+.starfield {
+  height: 100vh;
+  background: url("../../img/task-2/bg.jpg") no-repeat center/cover;
+}
+
+.blackhole-object {
+  position: absolute;
+  z-index: 1;
+  top: 5px;
+  left: 5px;
+  width: calc(777px / 3);
+  height: calc(437px / 3 + 40px);
+
+  top: 200px;
+  left: 200px;
+  cursor: default;
+
+  &__title {
+    display: none;
+    position: absolute;
+    top: -50px;
+  }
+
+  &__body {
+    width: calc(777px / 3);
+    height: calc(437px / 3);
+    background: url("../../img/task-2/objects/black-hole2.gif") no-repeat
+      center/cover;
+  }
+}
+
+.celestial-object {
+  position: relative;
+  // z-index: 2;
+  // z-index: initial;
+  cursor: all-scroll;
+
+  & > * {
+    position: relative;
+  }
+
+  &__title {
+    margin-top: 5px;
+    display: block;
+    cursor: text;
+    border: 2px solid transparent;
+    border-radius: 5px;
+
+    &:hover {
+      border-color: $border;
+      background-color: rgba(255, 255, 255, 0.12);
+    }
+  }
+
+  &__body {
+    // margin-top: 5px;
+    z-index: -1;
+    margin: 5px auto 0;
+  }
+
+  &-1 {
+    top: 50px;
+    left: 50px;
+  }
+
+  &-2 {
+    top: 450px;
+    left: 450px;
+  }
+
+  &-3 {
+    top: 650px;
+    left: 650px;
+  }
+
+  &-4 {
+    top: 50px;
+    right: 50px;
+  }
+}
+
+.wrapper {
+  &-outer {
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    // position: relative;
+    z-index: 10;
+    background: #000;
+  }
+
+  &-inner {
+    display: flex;
+    align-items: flex-end;
+  }
+}
+
+.title-edit {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    font-size: 14px;
+    color: #fff;
+    text-shadow: $textshadow;
+    animation: input-fade 3s infinite alternate;
+  }
+
+  &__input {
+    // width: calc(278px / 2);
+    width: 100%;
+    margin-top: 5px;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 5px 10px;
+
+    &:hover,
+    &:focus {
+      border: 2px solid $border;
+    }
+  }
+
+  &__btn {
+    padding: 2px 8px;
+    background-color: rgb(55, 158, 55);
+    border: 1px solid rgb(38, 107, 38);
+    border-radius: 3px;
+    font-size: 18px;
+    color: #000;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(38, 107, 38);
+      color: #fff;
+    }
+  }
+}
+
+.star {
+  width: calc(278px / 2);
+  height: calc(278px / 2);
+  background: url("../../img/task-2/objects/sun2.gif") no-repeat center/cover;
+}
+
+@keyframes input-fade {
+  from {
+    opacity: 10%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
