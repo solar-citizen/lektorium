@@ -1,12 +1,6 @@
 const starfield = document.querySelector(".js-starfield");
 const celestialObjects = starfield.querySelector(".js-celestial");
-
-// const d = document.getElementsByClassName("draggable");
-// const d = document.getElementsByClassName("js-celestial");
-
-// for (let i = 0; i < d.length; i++) {
-//   d[i].style.position = "relative";
-// }
+const blackhole = document.querySelector(".js-blackhole");
 
 const dragObject = (e) => {
   let target = e.target;
@@ -17,10 +11,8 @@ const dragObject = (e) => {
 
   target.moving = true;
 
-  e.clientX
-    ? ((target.oldX = e.clientX), (target.oldY = e.clientY))
-    : ((target.oldX = e.touches[0].clientX),
-      (target.oldY = e.touches[0].clientY));
+  target.oldX = e.clientX;
+  target.oldY = e.clientY;
 
   target.oldLeft =
     window.getComputedStyle(target).getPropertyValue("left").split("px")[0] * 1;
@@ -34,11 +26,8 @@ const dragObject = (e) => {
       return;
     }
 
-    e.clientX
-      ? ((target.distX = e.clientX - target.oldX),
-        (target.distY = e.clientY - target.oldY))
-      : ((target.distX = e.touches[0].clientX - target.oldX),
-        (target.distY = e.touches[0].clientY - target.oldY));
+    target.distX = e.clientX - target.oldX;
+    target.distY = e.clientY - target.oldY;
 
     target.style.left = target.oldLeft + target.distX + "px";
     target.style.top = target.oldTop + target.distY + "px";
@@ -48,21 +37,11 @@ const dragObject = (e) => {
     target.moving = false;
   };
 
-  // document.onmousemove = startDrag;
-  // document.ontouchmove = startDrag;
   starfield.addEventListener("mousemove", startDrag);
-  starfield.addEventListener("touchmove", startDrag);
-
-  // target.onmouseup = endDrag;
-  // target.ontouchend = endDrag;
   target.addEventListener("mouseup", endDrag);
-  target.addEventListener("touchend", endDrag);
 };
 
-// starfield.onmousedown = dragObject;
-// starfield.ontouchstart = dragObject;
 starfield.addEventListener("mousedown", dragObject);
-starfield.addEventListener("touchstart", dragObject);
 
 // // -------------------------------
 // let objects;

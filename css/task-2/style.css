@@ -18,10 +18,6 @@ body {
   text-shadow: 2px 0 3px rgba(0, 0, 0, 0.7);
 }
 
-.hide {
-  display: none !important;
-}
-
 .blackhole-object.hovered span {
   display: block;
 }
@@ -29,18 +25,17 @@ body {
 .starfield {
   height: 100vh;
   background: url("../../img/task-2/bg.jpg") no-repeat center/cover;
+  position: relative;
+  z-index: 10;
 }
 
 .blackhole-object {
-  position: absolute;
-  z-index: 1;
-  top: 5px;
-  left: 5px;
   width: calc(777px / 3);
   height: calc(437px / 3 + 40px);
+  position: absolute;
+  z-index: -2;
   top: 200px;
   left: 200px;
-  cursor: default;
 }
 .blackhole-object__title {
   display: none;
@@ -48,13 +43,14 @@ body {
   top: -50px;
 }
 .blackhole-object__body {
-  width: calc(777px / 3);
-  height: calc(437px / 3);
-  background: url("../../img/task-2/objects/black-hole2.gif") no-repeat center/cover;
+  width: calc(777px / 3.5);
+  height: calc(437px / 3.5);
+  background: url("../../img/task-2/objects/black-hole.gif") no-repeat center/cover;
 }
 
 .celestial-object {
-  position: relative;
+  position: absolute;
+  z-index: initial;
   cursor: all-scroll;
 }
 .celestial-object > * {
@@ -92,13 +88,6 @@ body {
   right: 50px;
 }
 
-.wrapper-outer {
-  width: 200px;
-  height: 300px;
-  position: absolute;
-  z-index: 10;
-  background: #000;
-}
 .wrapper-inner {
   display: flex;
   align-items: flex-end;
@@ -142,7 +131,7 @@ body {
 .star {
   width: calc(278px / 2);
   height: calc(278px / 2);
-  background: url("../../img/task-2/objects/sun2.gif") no-repeat center/cover;
+  background: url("../../img/task-2/objects/sun.gif") no-repeat center/cover;
 }
 
 @keyframes input-fade {
