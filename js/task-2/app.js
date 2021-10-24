@@ -1,63 +1,109 @@
+// --- --- Task #2 --- --- //
+
+// Import modules:
+import { dragObject } from "./dragObject.js";
+
 const starfield = document.querySelector(".js-starfield");
 const celestialObjects = starfield.querySelector(".js-celestial");
 const blackhole = document.querySelector(".js-blackhole");
 
-const dragObject = (e) => {
-  let target = e.target;
+let objects;
 
-  if (!target.classList.contains("js-celestial")) {
-    return;
+// localstorage
+!localStorage.objects
+  ? (objects = [])
+  : (objects = JSON.parse(localStorage.getItem("objects")));
+
+const CelestialObject = class {
+  constructor(type = "star", name = "Sun", posX = 150, posY = 150) {
+    this.type = type;
+    this.name = name;
+    this.posX = posX;
+    this.posY = posY;
+  }
+};
+
+const createTemplate = (object, i) => {
+  return `
+    <div class="celestial-object celestial-object-${i + 1} js-celestial">
+      <div class="delete js-deleteBtn"></div>
+      <div class="title-edit js-titleEdit hide">
+        <label for="#${
+          i + 1
+        }" class="title-edit__label">Enter new name: </label>
+        <div class="wrapper-inner">
+          <input type="text" class="title-edit__input js-editInput" 
+            id="#${i + 1}" 
+          />
+          <button type="button" class="title-edit__btn js-editBtn">
+            &#10004;
+          </button>
+        </div>
+      </div>
+      <span class="title celestial-object__title js-title">${object.name}</span>
+      <div class="celestial-object__body js-objectBody ${object.type}"></div>
+    </div>
+  `;
+};
+
+const createInitialTemplate = () => {
+  if (objects.length === 0) {
+    objects.push(new CelestialObject());
   }
 
-  target.moving = true;
+  updateLocalStorage();
+};
 
-  target.oldX = e.clientX;
-  target.oldY = e.clientY;
+const fillStarfield = () => {
+  starfield.innerHTML = "";
 
-  target.oldLeft =
-    window.getComputedStyle(target).getPropertyValue("left").split("px")[0] * 1;
-  target.oldTop =
-    window.getComputedStyle(target).getPropertyValue("top").split("px")[0] * 1;
+  if (objects.length > 0) {
+    objects.forEach((celestialObj, i) => {
+      starfield.innerHTML += createTemplate(celestialObj, i);
+    });
+  }
+};
 
-  const startDrag = (e) => {
-    e.preventDefault();
+// send object(-s) TO local storage
+const updateLocalStorage = () => {
+  localStorage.setItem("objects", JSON.stringify(objects));
+};
 
-    if (!target.moving) {
-      return;
-    }
+// 2 in 1
+const updateFill = () => {
+  updateLocalStorage();
+  fillStarfield();
+};
 
-    target.distX = e.clientX - target.oldX;
-    target.distY = e.clientY - target.oldY;
+const generateObject = (e) => {
+  let newObj = new CelestialObject();
+  console.log(e.offsetX, e.offsetY);
 
-    target.style.left = target.oldLeft + target.distX + "px";
-    target.style.top = target.oldTop + target.distY + "px";
-  };
+  // create new object
+  // and put it to objects array
+  if (newObj.posX !== objects.some(Object.values)) {
+    // objects.push(newObj("star", "SUPASTAR", e.offsetX, e.offsetY));
+    newObj = new CelestialObject("star", "SUPASTAR", e.offsetX, e.offsetY);
 
-  const endDrag = () => {
-    target.moving = false;
-  };
+    objects.push(newObj);
+  } else {
+    console.log("new object hasn't been created");
+  }
 
-  starfield.addEventListener("mousemove", startDrag);
-  target.addEventListener("mouseup", endDrag);
+  // and display it on field
+  updateFill();
 };
 
 starfield.addEventListener("mousedown", dragObject);
+starfield.addEventListener("dblclick", generateObject);
 
-// // -------------------------------
-// let objects;
+createInitialTemplate();
+fillStarfield();
+// starfield.addEventListener("dblclick", () => {
+//   console.log("DBLCLICKED");
+// });
 
-// !localStorage.objects
-//   ? (objects = [])
-//   : (objects = JSON.parse(localStorage.getItem("objects")));
-
-// const CelestialObject = class {
-//   constructor(type, name, posX, posY) {
-//     this.type = type;
-//     this.name = name;
-//     this.posX = posX;
-//     this.posY = posY;
-//   }
-// };
+// // ------------------------------
 
 // const createInitialTemplate = () => {
 //   if (objects.length == 0) {

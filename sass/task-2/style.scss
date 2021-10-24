@@ -11,6 +11,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }
 
 .title {
@@ -65,7 +66,7 @@ body {
   position: absolute;
 
   // z-index: 2;
-  z-index: initial;
+  // z-index: initial;
   cursor: all-scroll;
 
   & > * {
@@ -114,8 +115,9 @@ body {
 
 .wrapper {
   &-inner {
+    margin-top: 5px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
   }
 }
 
@@ -131,9 +133,7 @@ body {
   }
 
   &__input {
-    // width: calc(278px / 2);
-    width: 100%;
-    margin-top: 5px;
+    width: 150px;
     outline: none;
     font-size: 16px;
     border-radius: 5px;
@@ -147,16 +147,21 @@ body {
 
   &__btn {
     padding: 2px 8px;
-    background-color: rgb(55, 158, 55);
-    border: 1px solid rgb(38, 107, 38);
+    flex-basis: 20%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 3px;
     font-size: 18px;
     color: #000;
 
     &:hover {
       cursor: pointer;
-      background-color: rgb(38, 107, 38);
+      background-color: rgba(0, 0, 0, 0.5);
       color: #fff;
+    }
+
+    &:active {
+      transform: scale(0.9);
     }
   }
 }
@@ -165,6 +170,31 @@ body {
   width: calc(278px / 2);
   height: calc(278px / 2);
   background: url("../../img/task-2/objects/sun.gif") no-repeat center/cover;
+}
+
+.delete {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 1;
+  left: calc(100% - 30px - 1px);
+  top: -20px;
+  transform: translateY(-30%);
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.5) url("../../img/task-2/trash.png") center
+    center/cover no-repeat;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  &:active {
+    transform: translateY(-25%);
+  }
 }
 
 @keyframes input-fade {
