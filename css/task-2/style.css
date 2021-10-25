@@ -53,6 +53,9 @@ body {
   position: absolute;
   cursor: all-scroll;
 }
+.celestial-object.delete {
+  animation: deletion 1s ease-in-out;
+}
 .celestial-object > * {
   position: relative;
 }
@@ -71,28 +74,6 @@ body {
   z-index: -1;
   margin: 5px auto 0;
 }
-.celestial-object-1 {
-  top: 50px;
-  left: 50px;
-}
-.celestial-object-2 {
-  top: 450px;
-  left: 450px;
-}
-.celestial-object-3 {
-  top: 650px;
-  left: 650px;
-}
-.celestial-object-4 {
-  top: 50px;
-  right: 50px;
-}
-
-.wrapper-inner {
-  margin-top: 5px;
-  display: flex;
-  align-items: center;
-}
 
 .title-edit {
   display: flex;
@@ -103,6 +84,11 @@ body {
   color: #fff;
   text-shadow: 2px 0 3px rgba(0, 0, 0, 0.7);
   animation: input-fade 3s infinite alternate;
+}
+.title-edit .wrapper {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
 }
 .title-edit__input {
   width: 150px;
@@ -133,6 +119,30 @@ body {
 }
 
 .star {
+  width: calc(278px / 2);
+  height: calc(278px / 2);
+  background: url("../../img/task-2/objects/sun.gif") no-repeat center/cover;
+}
+
+.planet {
+  width: calc(278px / 2);
+  height: calc(278px / 2);
+  background: url("../../img/task-2/objects/sun.gif") no-repeat center/cover;
+}
+
+.meteor {
+  width: calc(278px / 2);
+  height: calc(278px / 2);
+  background: url("../../img/task-2/objects/sun.gif") no-repeat center/cover;
+}
+
+.asteroid {
+  width: calc(278px / 2);
+  height: calc(278px / 2);
+  background: url("../../img/task-2/objects/sun.gif") no-repeat center/cover;
+}
+
+.comet {
   width: calc(278px / 2);
   height: calc(278px / 2);
   background: url("../../img/task-2/objects/sun.gif") no-repeat center/cover;

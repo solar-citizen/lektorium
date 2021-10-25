@@ -1,3 +1,6 @@
+// Import modules:
+// import { updateLocalStorage } from "./app.js";
+
 // drag and drop function
 const dragObject = (e) => {
   let target = e.target;
@@ -36,6 +39,8 @@ const dragObject = (e) => {
 
   document.addEventListener("mousemove", startDrag);
   target.addEventListener("mouseup", endDrag);
+
+  // updateLocalStorage();
 };
 
-export { dragObject };
+// export { dragObject };

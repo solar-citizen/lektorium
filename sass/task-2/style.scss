@@ -69,6 +69,10 @@ body {
   // z-index: initial;
   cursor: all-scroll;
 
+  &.delete {
+    animation: deletion 1s ease-in-out;
+  }
+
   & > * {
     position: relative;
   }
@@ -91,34 +95,6 @@ body {
     z-index: -1;
     margin: 5px auto 0;
   }
-
-  &-1 {
-    top: 50px;
-    left: 50px;
-  }
-
-  &-2 {
-    top: 450px;
-    left: 450px;
-  }
-
-  &-3 {
-    top: 650px;
-    left: 650px;
-  }
-
-  &-4 {
-    top: 50px;
-    right: 50px;
-  }
-}
-
-.wrapper {
-  &-inner {
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
-  }
 }
 
 .title-edit {
@@ -130,6 +106,12 @@ body {
     color: #fff;
     text-shadow: $textshadow;
     animation: input-fade 3s infinite alternate;
+  }
+
+  .wrapper {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
   }
 
   &__input {
@@ -172,6 +154,30 @@ body {
   background: url("../../img/task-2/objects/sun.gif") no-repeat center/cover;
 }
 
+.planet {
+  width: calc(278px / 2);
+  height: calc(278px / 2);
+  background: url("../../img/task-2/objects/sun.gif") no-repeat center/cover;
+}
+
+.meteor {
+  width: calc(278px / 2);
+  height: calc(278px / 2);
+  background: url("../../img/task-2/objects/sun.gif") no-repeat center/cover;
+}
+
+.asteroid {
+  width: calc(278px / 2);
+  height: calc(278px / 2);
+  background: url("../../img/task-2/objects/sun.gif") no-repeat center/cover;
+}
+
+.comet {
+  width: calc(278px / 2);
+  height: calc(278px / 2);
+  background: url("../../img/task-2/objects/sun.gif") no-repeat center/cover;
+}
+
 .delete {
   content: "";
   display: block;
@@ -205,3 +211,12 @@ body {
     opacity: 100%;
   }
 }
+
+// @keyframes deletion {
+//   from {
+//     opacity: 1;
+//   }
+//   to {
+//     opacity: 0;
+//   }
+// }
