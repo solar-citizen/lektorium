@@ -178,3 +178,11 @@ body {
     opacity: 100%;
   }
 }
+@keyframes deletion {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

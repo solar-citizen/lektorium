@@ -1,51 +1,59 @@
 // --- --- Task #2 --- --- //
+// Import modules:
+// import { dragObject } from "./dragObject.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Import modules:
-  // import { dragObject } from "./dragObject.js";
+const starfield = document.querySelector(".js-starfield");
+// const celestialObjects = starfield.querySelector(".js-celestial");
+// const blackhole = document.querySelector(".js-blackhole");
+// const deleteBtn = document.querySelector(".js-deleteBtn");
+const objName = document.querySelectorAll(".js-title");
+const editObjName = document.querySelectorAll(".js-editInput").value;
+const acceptObjName = document.querySelectorAll(".js-editBtn");
 
-  const starfield = document.querySelector(".js-starfield");
-  // const celestialObjects = starfield.querySelector(".js-celestial");
-  // const blackhole = document.querySelector(".js-blackhole");
-  // const deleteBtn = document.querySelector(".js-deleteBtn");
-  const objName = document.querySelectorAll(".js-title");
-  const editObjName = document.querySelectorAll(".js-editInput").value;
-  const acceptObjName = document.querySelectorAll(".js-editBtn");
+let objects;
+// console.log(objects);
 
-  let objects;
+let objectDivs;
 
-  // localstorage
-  !localStorage.objects
-    ? (objects = [])
-    : (objects = JSON.parse(localStorage.getItem("objects")));
+// localstorage
+!localStorage.objects
+  ? (objects = [])
+  : (objects = JSON.parse(localStorage.getItem("objects")));
+console.log(objects);
 
-  // const typesOfObjects = ["star", "planet", "asteroid", "comet", "meteor"];
-  const typesOfObjects = ["star"];
-  const randomType = Math.floor(Math.random() * typesOfObjects.length);
-  const defaultType = typesOfObjects[randomType];
-  const defaultName = defaultType;
+let clonedObjects = [...objects];
+console.log(clonedObjects);
 
-  const CelestialObject = class {
-    constructor(type = "star", name = "Sun", posX = 150, posY = 150) {
-      this.type = type;
-      this.name = name;
-      this.posX = posX;
-      this.posY = posY;
-    }
+// set localstorage
+const updateLocalStorage = () => {
+  localStorage.setItem("objects", JSON.stringify(objects));
+};
 
-    // delete() {}
-  };
+// const typesOfObjects = ["star", "planet", "asteroid", "comet", "meteor"];
+const typesOfObjects = ["star"];
+const randomType = Math.floor(Math.random() * typesOfObjects.length);
+const defaultType = typesOfObjects[randomType];
+const defaultName = defaultType;
 
-  const createInitialTemplate = () => {
-    if (objects.length == 0) {
-      objects.push(new CelestialObject());
-    }
+const CelestialObject = class {
+  constructor(type = "star", name = "Sun", posX = 350, posY = 150) {
+    this.type = type;
+    this.name = name;
+    this.posX = posX;
+    this.posY = posY;
+  }
+};
 
-    updateLocalStorage();
-  };
+const createInitialTemplate = () => {
+  if (objects.length === 0) {
+    objects.push(new CelestialObject());
+  }
 
-  const createTemplate = (object, i) => {
-    return `
+  updateLocalStorage();
+};
+
+const template = (object, i) => {
+  return `
     <div class="celestial-object celestial-object-${i + 1} js-celestial" 
     style="left: ${object.posX}px; top: ${object.posY}px;">
       <div onclick="deleteObject(${i})" class="delete js-deleteBtn"></div>
@@ -65,118 +73,113 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="celestial-object__body js-objectBody ${object.type}"></div>
     </div>
   `;
-  };
+};
 
-  const fillStarfield = () => {
-    starfield.innerHTML = "";
+const render = () => {
+  starfield.innerHTML = "";
 
-    if (objects.length > 0) {
-      objects.forEach((celestialObj, i) => {
-        starfield.innerHTML += createTemplate(celestialObj, i);
-      });
-    }
-  };
-
-  // send object(-s) TO local storage
-  const updateLocalStorage = () => {
-    localStorage.setItem("objects", JSON.stringify(objects));
-  };
-
-  // 2 in 1
-  const updateFill = () => {
-    updateLocalStorage();
-    fillStarfield();
-  };
-
-  const generateObject = (e) => {
-    // create new object
-    let newObj = new CelestialObject(
-      defaultType,
-      `a new ${defaultName}`,
-      e.clientX,
-      e.clientY
-    );
-
-    // and put it to objects array
-    objects.push(newObj);
-
-    // and display it on field
-    updateFill();
-  };
-
-  // delete objects
-  const deleteObject = (i) => {
-    setTimeout(() => {
-      objects.splice(i, 1);
-      updateFill();
-    }, 750);
-  };
-
-  const editObjectName = () => {
-    if (editObjName) {
-      objName.innerHTML = editObjName.value;
-    }
-
-    editObjName = "";
-  };
-
-  // edit object's name
-  if (acceptObjName) {
-    acceptObjName.forEach((acceptBtn) => {
-      acceptBtn.addEventListener("click", editObjectName);
+  if (objects.length > 0) {
+    objects.forEach((celestialObj, index) => {
+      starfield.innerHTML += template(celestialObj, index);
     });
+    objectDivs = document.querySelectorAll(".js-celestial");
+    console.log(objectDivs);
+  }
+};
+
+// 2 in 1
+const updateFill = () => {
+  updateLocalStorage();
+  render();
+};
+
+const generateObject = (e) => {
+  // create new object
+  let newObj = new CelestialObject(
+    defaultType,
+    `a new ${defaultName}`,
+    e.clientX,
+    e.clientY
+  );
+
+  // and put it to objects array
+  objects.push(newObj);
+
+  // and display it on field
+  updateFill();
+};
+
+// delete objects
+const deleteObject = (index) => {
+  // objectDivs[index].classList.add("delete");
+  objectDivs[index].classList.add("delete");
+  setTimeout(() => {
+    objects.splice(index, 1);
+    updateFill();
+  }, 1000);
+  console.log(index);
+};
+
+// const editObjectName = () => {
+//   if (editObjName) {
+//     objName.innerHTML = editObjName.value;
+//   }
+
+//   editObjName = "";
+// };
+
+// // edit object's name
+// if (acceptObjName) {
+//   acceptObjName.forEach((acceptBtn) => {
+//     acceptBtn.addEventListener("click", editObjectName);
+//   });
+// }
+
+// drag and drop function
+const dragObject = (e) => {
+  let target = e.target;
+
+  if (!target.classList.contains("js-celestial")) {
+    return;
   }
 
-  // drag and drop function
-  const dragObject = (e) => {
-    let target = e.target;
+  target.moving = true;
 
-    if (!target.classList.contains("js-celestial")) {
+  target.oldX = e.clientX;
+  target.oldY = e.clientY;
+
+  target.oldLeft =
+    window.getComputedStyle(target).getPropertyValue("left").split("px")[0] * 1;
+  target.oldTop =
+    window.getComputedStyle(target).getPropertyValue("top").split("px")[0] * 1;
+
+  const startDrag = (e) => {
+    if (!target.moving) {
       return;
     }
 
-    target.moving = true;
+    target.distX = e.clientX - target.oldX;
+    target.distY = e.clientY - target.oldY;
 
-    target.oldX = e.clientX;
-    target.oldY = e.clientY;
-
-    target.oldLeft =
-      window.getComputedStyle(target).getPropertyValue("left").split("px")[0] *
-      1;
-    target.oldTop =
-      window.getComputedStyle(target).getPropertyValue("top").split("px")[0] *
-      1;
-
-    const startDrag = (e) => {
-      e.preventDefault();
-
-      if (!target.moving) {
-        return;
-      }
-
-      target.distX = e.clientX - target.oldX;
-      target.distY = e.clientY - target.oldY;
-
-      target.style.left = target.oldLeft + target.distX + "px";
-      target.style.top = target.oldTop + target.distY + "px";
-    };
-
-    const endDrag = () => {
-      target.moving = false;
-      updateLocalStorage(); // doesn't work or different logic
-    };
-
-    document.addEventListener("mousemove", startDrag);
-    target.addEventListener("mouseup", endDrag);
+    target.style.left = target.oldLeft + target.distX + "px";
+    target.style.top = target.oldTop + target.distY + "px";
   };
 
-  starfield.addEventListener("mousedown", dragObject);
-  starfield.addEventListener("dblclick", generateObject);
+  const endDrag = () => {
+    target.moving = false;
+    updateLocalStorage(); // doesn't work or different logic
+  };
 
-  // deleteBtn.addEventListener("click", deleteObject);
+  document.addEventListener("mousemove", startDrag);
+  target.addEventListener("mouseup", endDrag);
+};
 
-  createInitialTemplate();
-  fillStarfield();
+starfield.addEventListener("mousedown", dragObject);
+starfield.addEventListener("dblclick", generateObject);
 
-  // export { updateLocalStorage };
-});
+// deleteBtn.addEventListener("click", deleteObject);
+
+createInitialTemplate();
+render();
+
+// export { updateLocalStorage };
