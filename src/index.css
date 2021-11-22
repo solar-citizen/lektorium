@@ -55,7 +55,7 @@
   right: -20px;
   content: '';
   display: block;
-  height: 290px;
+  height: 260px;
   width: 1px;
   background-color: #fff;
 }
@@ -152,7 +152,7 @@
   margin: 5px 5px 0;
 }
 
-/* Buttons */
+/* buttons */
 .btn {
   background-color: transparent;
   border: 1px solid #fff;
@@ -171,7 +171,6 @@
   transform: translate(2px, 2px);
 }
 
-/* Media queries */
 @media screen and (max-width: 1600px) {
   .figure {
     width: 150px;
@@ -194,7 +193,7 @@
     width: 190px;
   }
   .features::after {
-    height: 260px;
+    height: 230px;
   }
 
   .buttons > .btn {

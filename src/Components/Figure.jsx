@@ -1,20 +1,32 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { random } from 'lodash';
 import useWindowWidth from './useWindowWidth';
 
 const Figure = ({ x, y, figures, setFigures, figure, color, circle }) => {
   const [position, setPosition] = useState([x, y]);
+  const posX = position[0];
+  const posY = position[1];
   const [inputText, setInputText] = useState('');
   const [displayName, setDisplayName] = useState(true);
   const { width } = useWindowWidth();
 
+  const set = (key, value) => {
+    setFigures(
+      figures.map((figureItem) => {
+        if (figureItem.id === figure.id) {
+          return {
+            ...figureItem,
+            [key]: value,
+          };
+        }
+        return figureItem;
+      })
+    );
+  };
+
   const moveAt = (e) => {
-    if (!e.target.classList.contains('figure')) {
-      return;
-    } else {
-      e.target.style.left = e.pageX - e.target.offsetWidth / 2 + 'px';
-      e.target.style.top = e.pageY - e.target.offsetHeight / 2 + 'px';
-    }
+    e.target.style.left = e.pageX - e.target.offsetWidth / 2 + 'px';
+    e.target.style.top = e.pageY - e.target.offsetHeight / 2 + 'px';
   };
 
   const onMouseDown = (e) => {
@@ -43,54 +55,30 @@ const Figure = ({ x, y, figures, setFigures, figure, color, circle }) => {
   const onMouseUp = (e) => {
     e.target.moving = false;
     e.target.style.cursor = 'pointer';
-
-    setFigures(
-      figures.map((figureItem) => {
-        if (figureItem.id === figure.id) {
-          return {
-            ...figureItem,
-            x: position[0],
-            y: position[1],
-          };
-        }
-        return figureItem;
-      })
-    );
+    set('x', posX);
   };
+  useEffect(() => {
+    set('y', posY);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [x]);
 
   const deleteFigure = () => {
     setFigures(figures.filter((figureItem) => figureItem.id !== figure.id));
   };
 
   const changeColor = () => {
-    setFigures(
-      figures.map((figureItem) => {
-        if (figureItem.id === figure.id) {
-          return {
-            ...figureItem,
-            color: `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(
-              0,
-              255
-            )}, ${random(0.8, 1, true).toFixed(2)})`,
-          };
-        }
-        return figureItem;
-      })
+    set(
+      'color',
+      `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)}, ${random(
+        0.8,
+        1,
+        true
+      ).toFixed(2)})`
     );
   };
 
   const toCircle = () => {
-    setFigures(
-      figures.map((figureItem) => {
-        if (figureItem.id === figure.id) {
-          return {
-            ...figureItem,
-            circle: !figureItem.circle,
-          };
-        }
-        return figureItem;
-      })
-    );
+    set('circle', !circle);
   };
 
   const inputTextHandler = (e) => {
@@ -101,17 +89,7 @@ const Figure = ({ x, y, figures, setFigures, figure, color, circle }) => {
     e.preventDefault();
 
     if (inputText.trim()) {
-      setFigures(
-        figures.map((figureItem) => {
-          if (figureItem.id === figure.id) {
-            return {
-              ...figureItem,
-              name: inputText,
-            };
-          }
-          return figureItem;
-        })
-      );
+      set('name', inputText);
     }
 
     setInputText('');
@@ -160,13 +138,7 @@ const Figure = ({ x, y, figures, setFigures, figure, color, circle }) => {
           {figure.name}
         </div>
       </div>
-      <div
-        className='buttons'
-        // style={{
-        //   flexDirection: circle && 'column',
-        //   alignItems: circle && 'center',
-        // }}
-      >
+      <div className='buttons'>
         <button className='btn figure__delete' onClick={deleteFigure}>
           Delete
         </button>
@@ -178,7 +150,7 @@ const Figure = ({ x, y, figures, setFigures, figure, color, circle }) => {
         </button>
       </div>
       <div className='figure__position'>
-        x:{position[0]} y:{position[1]}
+        x:{posX} y:{posY}
       </div>
     </div>
   );

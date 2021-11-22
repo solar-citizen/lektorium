@@ -60,11 +60,6 @@ const App = () => {
             <li>drag figures</li>
             <li>change their name</li>
             <li>change their color</li>
-            <li>
-              switch between circle
-              <br />
-              and square form
-            </li>
             <li>save the changes</li>
             <li>save coordinates</li>
           </ul>
