@@ -31,4 +31,17 @@
     </details>
   </li>
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+  <li>
+    <a href="https://github.com/solar-citizen/lektorium/tree/task3"> ➤ Task 3: Find Path In Matrix </a>
+    <details>
+      <summary> Click to see result </summary>
+      <p align="center"> Matrix With Path: </p>
+      <p align="center">
+        <img src="doc/task3/matrix-with-path.png" alt="Task 3 Result" height="292px" width="533px">
+      </p>
+    </details>
+  </li>
+
 </ol>
